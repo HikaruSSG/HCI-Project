@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Business App
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It is a business application built with Next.js, Tailwind CSS, and TypeScript.
+
+## Tech Stack
+
+-   [Next.js](https://nextjs.org/) - React framework for building performant web applications
+-   [Tailwind CSS](https://tailwindcss.com/) - CSS framework for styling the application
+-   [TypeScript](https://www.typescriptlang.org/) - Superset of JavaScript that adds static typing
 
 ## Getting Started
 
@@ -32,6 +40,15 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Contribution Guidelines
+
+We welcome contributions to the Business App project. If you'd like to contribute, please follow these guidelines:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and commit them with clear, concise messages.
+4.  Submit a pull request.
 
 ## Deploy on Vercel
 
