@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const Contact = () => {
   const [email, setEmail] = useState('');
   const [unit, setUnit] = useState('');
   const [comment, setComment] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.unit) {
+      setUnit(router.query.unit as string);
+    }
+  }, [router.query.unit]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,18 +23,18 @@ const Contact = () => {
     const json = JSON.stringify(object);
 
     const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: json
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
     });
     const result = await response.json();
     if (response.status === 200 && result.success) {
-        window.location.href = '/thank-you';
+      window.location.href = '/thank-you';
     }
-}
+  }
 
 
   return (
@@ -60,9 +67,9 @@ const Contact = () => {
               value={unit}
               onChange={(e) => setUnit(e.target.value)}
             >
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
+              <option>Dog Room</option>
+              <option>Condo</option>
+              <option>Garden</option>
             </select>
           </div>
           <div className="mb-6">

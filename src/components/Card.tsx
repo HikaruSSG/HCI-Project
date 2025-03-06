@@ -40,38 +40,43 @@ interface CardProps {
   floorArea?: string;
   information?: string;
   title?: string;
+  index?: number;
 }
 
+import Link from 'next/link';
+
 const CardProps = ({ image, price, location, floorArea, information, title }: CardProps) => {
+  // Assuming 'index' is passed as a prop to CardProps
   return (
-    <div className="border border-primary shadow-text rounded-lg mx-4 text-text">
-<h1 className=' text-3xl p-2 text-center flex items-center justify-center text-primary'><SiHomeassistantcommunitystore className='mr-1' />
-      {title}
-</h1>
-      <div className='m-4'>
-        {/* eslint-disable-next-line @next/next/no-img-element*/}
-        <img src={image} alt="Card Image" className="w-full h-48 object-cover rounded-md" />
+    <Link href={{ pathname: '/contact', query: { unit: title } }} passHref>
+      <div className="border border-primary shadow-text rounded-lg mx-4 text-text cursor-pointer">
+        <h1 className=' text-3xl p-2 text-center flex items-center justify-center text-primary'><SiHomeassistantcommunitystore className='mr-1' />
+          {title}
+        </h1>
+        <div className='m-4'>
+          {/* eslint-disable-next-line @next/next/no-img-element*/}
+          <img src={image} alt="Card Image" className="w-full h-48 object-cover rounded-md" />
+        </div>
+        <div className='m-4'>
+          <div className="flex items-center mb-1 text-primary justify-center text-2xl">
+            <LuPhilippinePeso className="mr-1" />
+            <span>{price}</span>
+          </div>
+          <div className="flex items-center mb-1 text-primary">
+            <FaMapLocationDot className="mr-1" />
+            <span>{location}</span>
+          </div>
+          <div className="flex items-center mb-1 text-primary">
+            <SlSizeFullscreen className="mr-1" />
+            <span>{floorArea}</span>
+          </div>
+          <div className="flex items-center text-primary">
+            <BsFillInfoSquareFill className="mr-1" />
+            <span>{information}</span>
+          </div>
+        </div>
       </div>
-      <div className='m-4'>
-        <div className="flex items-center mb-1 text-primary justify-center text-2xl">
-          <LuPhilippinePeso className="mr-1" />
-          <span>{price}</span>
-        </div>
-        <div className="flex items-center mb-1 text-primary">
-          <FaMapLocationDot className="mr-1" />
-          <span>{location}</span>
-        </div>
-        <div className="flex items-center mb-1 text-primary">
-          <SlSizeFullscreen className="mr-1" />
-          <span>{floorArea}</span>
-        </div>
-        <div className="flex items-center text-primary">
-          <BsFillInfoSquareFill className="mr-1" />
-          <span>{information}</span>
-        </div>
-        
-      </div>
-    </div>
+    </Link>
   );
 }
 
@@ -88,6 +93,7 @@ const Card = () => {
           floorArea={card.floorArea}
           information={card.information}
           title={card.title}
+          index={index}
         />
       ))}
     </div>
