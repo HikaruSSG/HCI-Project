@@ -209,16 +209,19 @@ const Contact = () => {
             >
               Unit
             </label>
-<select
-  className="shadow appearance-none border border-primary rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-primary bg-[var(--background)]"
-  id="unit"
-  name="unit"
-  value={unit}
-  onChange={(e) => setUnit(e.target.value)}
->
-              <option>Dog Room</option>
-              <option>Condo</option>
-              <option>Garden</option>
+            <select
+              className="shadow appearance-none border border-primary rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-primary bg-[var(--background)]"
+              id="unit"
+              name="unit"
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+            >
+              <option value="">Select a unit</option>
+              {["Startup Office Space", "Boutique Retail Condo", "Small Business House", "Creative Studio Space", "Tech Startup Condo", "Online Business Apartment"].map((unitOption) => (
+                <option key={unitOption} value={unitOption}>
+                  {unitOption}
+                </option>
+              ))}
             </select>
           </div>
 

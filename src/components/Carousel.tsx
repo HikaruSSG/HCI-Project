@@ -3,6 +3,15 @@ import React, { useState, useEffect } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
+const images = [
+  "https://pics.craiyon.com/2024-09-14/bFZd55MTSVio9iqvnjXQrQ.webp",
+  "https://img.craiyon.com/2025-03-08/zOVacECIRsq0sN3E9ACO9w.webp",
+  "https://img.craiyon.com/2025-03-08/fAesBLWXR1in224bVBgDvg.webp",
+  "https://pics.craiyon.com/2024-09-09/M6GvNXFXQ1WHgeh9pgVBIQ.webp",
+  "https://pics.craiyon.com/2024-09-17/Z11EYIFUQQyKpczaPKm3QQ.webp",
+  "https://pics.craiyon.com/2024-09-04/hOGPeGyATCynIem7o4Udyg.webp",
+];
+
 const Carousel = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
@@ -23,12 +32,6 @@ const Carousel = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const images = [
-    "https://picsum.photos/id/237/400",
-    "https://picsum.photos/id/238/400",
-    "https://picsum.photos/id/239/400",
-  ];
 
   const goToPrevious = () => {
     setCurrentImageIndex(
@@ -64,7 +67,7 @@ const Carousel = () => {
           <img
             key={index}
             src={image}
-            alt={`Carousel Image ${index }`}
+            alt={`Carousel Image ${index + 1}`}
             className="absolute transition-transform duration-500"
             style={{
               width: screenWidth,

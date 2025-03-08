@@ -8,12 +8,54 @@ import { SiHomeassistantcommunitystore } from "react-icons/si";
 import Link from "next/link";
 
 const cardData = [
-  { title: "Dog Room", image: "https://picsum.photos/id/237/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
-  { title: "Condo", image: "https://picsum.photos/id/238/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
-  { title: "Garden", image: "https://picsum.photos/id/239/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
-  { title: "Dog Room", image: "https://picsum.photos/id/237/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
-  { title: "Condo", image: "https://picsum.photos/id/238/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
-  { title: "Garden", image: "https://picsum.photos/id/239/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
+  {
+    title: "Startup Office Space",
+    image: "https://pics.craiyon.com/2024-09-14/bFZd55MTSVio9iqvnjXQrQ.webp",
+    price: 8000,
+    location: "Manila",
+    floorArea: "50/m2",
+    information: "Ideal for startups, high growth potential",
+  },
+  {
+    title: "Boutique Retail Condo",
+    image: "https://img.craiyon.com/2025-03-08/zOVacECIRsq0sN3E9ACO9w.webp",
+    price: 9500,
+    location: "Cebu",
+    floorArea: "60/m2",
+    information: "Prime retail location, high foot traffic",
+  },
+  {
+    title: "Small Business House",
+    image: "https://img.craiyon.com/2025-03-08/fAesBLWXR1in224bVBgDvg.webp",
+    price: 7000,
+    location: "Davao",
+    floorArea: "45/m2",
+    information: "Perfect for small businesses, quiet area",
+  },
+  {
+    title: "Creative Studio Space",
+    image: "https://pics.craiyon.com/2024-09-09/M6GvNXFXQ1WHgeh9pgVBIQ.webp",
+    price: 6000,
+    location: "Quezon City",
+    floorArea: "35/m2",
+    information: "Great for creative ventures, close to shops",
+  },
+  {
+    title: "Tech Startup Condo",
+    image: "https://pics.craiyon.com/2024-09-17/Z11EYIFUQQyKpczaPKm3QQ.webp",
+    price: 8500,
+    location: "Makati",
+    floorArea: "55/m2",
+    information: "Perfect for tech startups, central location",
+  },
+  {
+    title: "Online Business Apartment",
+    image: "https://pics.craiyon.com/2024-09-04/hOGPeGyATCynIem7o4Udyg.webp",
+    price: 7500,
+    location: "Baguio",
+    floorArea: "40/m2",
+    information: "Ideal for online businesses, cool climate",
+  },
 ];
 
 interface CardProps {
@@ -26,7 +68,14 @@ interface CardProps {
   index?: number;
 }
 
-const CardProps = ({ image, price, location, floorArea, information, title }: CardProps) => {
+const CardProps = ({
+  image,
+  price,
+  location,
+  floorArea,
+  information,
+  title,
+}: CardProps) => {
   return (
     <Link href={{ pathname: "/contact", query: { unit: title } }} passHref>
       <div className="bg-background border border-primary shadow-lg rounded-lg m-4 text-gray-800 cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition duration-300">
@@ -35,7 +84,11 @@ const CardProps = ({ image, price, location, floorArea, information, title }: Ca
           {title}
         </h1>
         <div className="mb-4">
-          <img src={image} alt="Card Image" className="w-full h-48 object-cover rounded-lg shadow-md" />
+          <img
+            src={image}
+            alt="Card Image"
+            className="w-full h-48 object-cover rounded-lg shadow-md"
+          />
         </div>
         <div className="border-b-2 border-primary my-2"></div>
         <div className="mb-4">
@@ -43,25 +96,35 @@ const CardProps = ({ image, price, location, floorArea, information, title }: Ca
             <tbody>
               <tr>
                 <td className="py-2 px-4 border-b border-primary text-primary font-semibold">
-                  <LuPhilippinePeso className="inline-block mr-2 text-xl" /> Price
+                  <LuPhilippinePeso className="inline-block mr-2 text-xl" />{" "}
+                  Price
                 </td>
-                <td className="py-2 px-4 border-b border-primary text-primary">{price}</td>
+                <td className="py-2 px-4 border-b border-primary text-primary">
+                  {price}
+                </td>
               </tr>
               <tr>
                 <td className="py-2 px-4 border-b border-primary text-primary font-semibold">
-                  <FaMapLocationDot className="inline-block mr-2 text-xl" /> Location
+                  <FaMapLocationDot className="inline-block mr-2 text-xl" />{" "}
+                  Location
                 </td>
-                <td className="py-2 px-4 border-b border-primary text-primary">{location}</td>
+                <td className="py-2 px-4 border-b border-primary text-primary">
+                  {location}
+                </td>
               </tr>
               <tr>
                 <td className="py-2 px-4 border-b border-primary text-primary font-semibold">
-                  <SlSizeFullscreen className="inline-block mr-2 text-xl" /> Floor Area
+                  <SlSizeFullscreen className="inline-block mr-2 text-xl" />{" "}
+                  Floor Area
                 </td>
-                <td className="py-2 px-4 border-b border-primary text-primary">{floorArea}</td>
+                <td className="py-2 px-4 border-b border-primary text-primary">
+                  {floorArea}
+                </td>
               </tr>
               <tr>
                 <td className="py-2 px-4 text-primary font-semibold">
-                  <BsFillInfoSquareFill className="inline-block mr-2 text-xl" /> Information
+                  <BsFillInfoSquareFill className="inline-block mr-2 text-xl" />{" "}
+                  Information
                 </td>
                 <td className="py-2 px-4 text-primary">{information}</td>
               </tr>
@@ -78,7 +141,15 @@ const Card = () => {
     <div className="flex justify-center items-center">
       <div className="grid xl:grid-cols-3 m-6 md:grid-cols-2">
         {cardData.map((card, index) => (
-          <CardProps key={index} image={card.image} price={card.price} location={card.location} floorArea={card.floorArea} information={card.information} title={card.title} />
+          <CardProps
+            key={index}
+            image={card.image}
+            price={card.price}
+            location={card.location}
+            floorArea={card.floorArea}
+            information={card.information}
+            title={card.title}
+          />
         ))}
       </div>
     </div>
