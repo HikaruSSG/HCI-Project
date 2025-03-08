@@ -139,7 +139,7 @@ const CardProps = ({
 const Card = () => {
   return (
     <div className="flex justify-center items-center">
-      <div className="grid xl:grid-cols-3 m-6 md:grid-cols-2">
+      <div className="grid m-2">
         {cardData.map((card, index) => (
           <CardProps
             key={index}
