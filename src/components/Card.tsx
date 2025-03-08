@@ -11,6 +11,9 @@ const cardData = [
   { title: "Dog Room", image: "https://picsum.photos/id/237/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
   { title: "Condo", image: "https://picsum.photos/id/238/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
   { title: "Garden", image: "https://picsum.photos/id/239/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
+  { title: "Dog Room", image: "https://picsum.photos/id/237/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
+  { title: "Condo", image: "https://picsum.photos/id/238/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
+  { title: "Garden", image: "https://picsum.photos/id/239/300", price: 1500000, location: "New York", floorArea: "100/m2", information: "4 bedrooms, 2 bathrooms, parking space" },
 ];
 
 interface CardProps {
@@ -26,7 +29,7 @@ interface CardProps {
 const CardProps = ({ image, price, location, floorArea, information, title }: CardProps) => {
   return (
     <Link href={{ pathname: "/contact", query: { unit: title } }} passHref>
-      <div className="bg-background border border-primary shadow-lg rounded-lg mx-4 text-gray-800 cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition duration-300">
+      <div className="bg-background border border-primary shadow-lg rounded-lg m-4 text-gray-800 cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition duration-300">
         <h1 className="text-3xl font-bold text-center flex items-center justify-center text-primary mb-3">
           <SiHomeassistantcommunitystore className="mr-2 text-2xl" />
           {title}
