@@ -9,6 +9,7 @@ const links: NavLinkProps[] = [
   { linkName: 'Home', href: '/', onLinkClick: () => {} },
   { linkName: 'About', href: '/about', onLinkClick: () => {} },
   { linkName: 'Contacts', href: '/contact', onLinkClick: () => {}},
+  { linkName: 'Login', href: '/login', onLinkClick: () => {}},
 ];
 
 interface NavLinkProps {
