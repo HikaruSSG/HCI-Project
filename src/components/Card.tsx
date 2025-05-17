@@ -6,6 +6,7 @@ import { LuPhilippinePeso } from "react-icons/lu";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import Link from "next/link";
+import { CardData } from "../pages/cms";
 
 const cardData = [
   {
@@ -18,7 +19,7 @@ const cardData = [
   },
   {
     title: "Boutique Retail Condo",
-    image: "https://img.craiyon.com/2025-03-08/zOVacECIRsq0sN3E9ACO9w.webp",
+    image: "https://pics.craiyon.com/2024-09-22/Qpy4oygOQLWX3moUSzLFEw.webp",
     price: 9500,
     location: "Cebu",
     floorArea: "60/m2",
@@ -26,7 +27,7 @@ const cardData = [
   },
   {
     title: "Small Business House",
-    image: "https://img.craiyon.com/2025-03-08/fAesBLWXR1in224bVBgDvg.webp",
+    image: "https://pics.craiyon.com/2024-09-04/4yF4br0CR0eqbkB1KTYSXw.webp",
     price: 7000,
     location: "Davao",
     floorArea: "45/m2",
@@ -58,7 +59,7 @@ const cardData = [
   },
 ];
 
-interface CardProps {
+interface CardItemProps {
   image?: string;
   price?: number;
   location?: string;
@@ -68,14 +69,14 @@ interface CardProps {
   index?: number;
 }
 
-const CardProps = ({
+const CardItem = ({
   image,
   price,
   location,
   floorArea,
   information,
   title,
-}: CardProps) => {
+}: CardItemProps) => {
   return (
     <Link href={{ pathname: "/contact", query: { unit: title } }} passHref>
       <div className="bg-background border border-primary shadow-lg rounded-lg m-4 text-gray-800 cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition duration-300">
@@ -136,12 +137,17 @@ const CardProps = ({
   );
 };
 
-const Card = () => {
+
+interface CardProps {
+  cards?: CardData[];
+}
+
+const Card = ({ cards }: CardProps) => {
   return (
     <div className="flex justify-center items-center">
       <div className="grid m-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {cardData.map((card, index) => (
-          <CardProps
+          <CardItem
             key={index}
             image={card.image}
             price={card.price}
@@ -151,6 +157,21 @@ const Card = () => {
             title={card.title}
           />
         ))}
+        {/*
+        * //TODO: Dynamic Card goes Here
+        */}
+        {cards &&
+          cards.map((card, index) => (
+            <CardItem
+              key={index}
+              image={card.image}
+              price={card.price}
+              location={card.location}
+              floorArea={card.floorArea}
+              information={card.information}
+              title={card.title}
+            />
+          ))}
       </div>
     </div>
   );

@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
+
+ useEffect(() => {
+    // Check local storage for login status on component mount
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    if (storedLoginStatus && JSON.parse(storedLoginStatus) && router.pathname !== '/login') {
+      router.push('/cms');
+    }
+  }, [router.pathname]);
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,8 +34,9 @@ const LoginPage = () => {
       return;
     }
 
+    localStorage.setItem('isLoggedIn', JSON.stringify(true));
     alert('Successfully logged in!');
-    window.location.href = '/';
+    router.push('/cms');
   };
 
   return (

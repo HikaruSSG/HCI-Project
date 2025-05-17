@@ -5,13 +5,6 @@ import { Sling as Hamburger } from 'hamburger-react';
 import { FaSun } from "react-icons/fa";
 import { FaMoon } from "react-icons/fa6";
 
-const links: NavLinkProps[] = [
-  { linkName: 'Home', href: '/', onLinkClick: () => {} },
-  { linkName: 'About', href: '/about', onLinkClick: () => {} },
-  { linkName: 'Contacts', href: '/contact', onLinkClick: () => {}},
-  { linkName: 'Login', href: '/login', onLinkClick: () => {}},
-];
-
 interface NavLinkProps {
   linkName: string;
   href: string;
@@ -30,11 +23,34 @@ const NavLink: React.FC<NavLinkProps> = ({ linkName, href, className, onLinkClic
   );
 };
 
-
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Added state for login status
+
+  const router = useRouter();
+
+  // Function to check login status from localStorage and update state
+  const checkLoginStatus = () => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    console.log('checkLoginStatus - storedLoginStatus:', storedLoginStatus);
+    if (storedLoginStatus !== null) {
+      setIsLoggedIn(JSON.parse(storedLoginStatus));
+    } else {
+      setIsLoggedIn(false);
+    }
+  };
+
+  useEffect(() => {
+    // Check login status on component mount
+    checkLoginStatus();
+  }, []); // Empty dependency array to run only on mount
+
+  // Log isLoggedIn state after render
+  useEffect(() => {
+    console.log('Navbar isLoggedIn state:', isLoggedIn);
+  }, [isLoggedIn]);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -66,6 +82,24 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  // Define navigation links based on login status
+  const navLinks = [
+    { linkName: 'Home', href: '/', onLinkClick: () => {} },
+    { linkName: 'About', href: '/about', onLinkClick: () => {} },
+    { linkName: 'Contacts', href: '/contact', onLinkClick: () => {} },
+    ...(isLoggedIn ? [
+      { linkName: 'CMS', href: '/cms', onLinkClick: () => {} },
+      { linkName: 'Log Out', href: '/login', onLinkClick: () => {
+        console.log('Logging out...');
+        localStorage.setItem('isLoggedIn', 'false'); // Set to false instead of removing
+        setIsLoggedIn(false); // Immediately update state
+        router.push('/login');
+      }},
+    ] : [
+      { linkName: 'Login', href: '/login', onLinkClick: () => {} },
+    ]),
+  ];
+
   return (
     <nav className="bg-background border-b-4 border-primary m-0 z-60 border-gray-800 sticky top-0 text-background" style={{ zIndex: '60 !important' }}>
       <div className="container mx-auto p-4 m-0 flex items-center justify-between">
@@ -82,7 +116,7 @@ const Navbar = () => {
 
         {/* Main navigation links (hidden on mobile) */}
         <ul className="hidden md:flex m-0 items-center space-x-4">
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <li key={link.href}>
               <NavLink key={link.href} linkName={link.linkName} href={link.href} onLinkClick={toggleMenu} />
             </li>
@@ -102,7 +136,7 @@ const Navbar = () => {
         } transition-transform duration-100 ease-in-out`}
       >
         <ul className="flex flex-col space-y-4 mt-8">
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <li key={link.href} className='text-center'>
               <NavLink className='text-center' key={link.href} linkName={link.linkName} href={link.href} onLinkClick={toggleMenu} />
             </li>

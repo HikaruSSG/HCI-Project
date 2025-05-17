@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node stati.js",
+    "start": "npx http-server out  --port 3000",
     "lint": "next lint",
     "push": "./push.sh"
   },

@@ -5,8 +5,8 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 const images = [
   "https://pics.craiyon.com/2024-09-14/bFZd55MTSVio9iqvnjXQrQ.webp",
-  "https://img.craiyon.com/2025-03-08/zOVacECIRsq0sN3E9ACO9w.webp",
-  "https://img.craiyon.com/2025-03-08/fAesBLWXR1in224bVBgDvg.webp",
+  "https://pics.craiyon.com/2024-09-04/4yF4br0CR0eqbkB1KTYSXw.webp",
+  "https://pics.craiyon.com/2024-09-22/Qpy4oygOQLWX3moUSzLFEw.webp",
   "https://pics.craiyon.com/2024-09-09/M6GvNXFXQ1WHgeh9pgVBIQ.webp",
   "https://pics.craiyon.com/2024-09-17/Z11EYIFUQQyKpczaPKm3QQ.webp",
   "https://pics.craiyon.com/2024-09-04/hOGPeGyATCynIem7o4Udyg.webp",
